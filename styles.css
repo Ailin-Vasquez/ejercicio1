@@ -1,0 +1,132 @@
+/* ---------- Variables del tema Light (por defecto) ---------- */
+.theme {
+  --bg: #ffffff;
+  --text: #111827;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+  --accent: #ef97e671;
+  --accent-text: #ffffff;
+  --btn-bg: #fcc9fc;
+  --btn-text: #ffffff;
+}
+
+/* ---------- Cambio de tema: radio :checked + selector ~ ---------- */
+#tema-dark:checked ~ .theme {
+  --bg: #1f2937;
+  --text: #f9fafb;
+  --muted: #9ca3af;
+  --border: #374151;
+  --accent: #eab5cf;
+  --accent-text: #ffffff;
+  --btn-bg: #d4a3bf;
+  --btn-text: #ffffff;
+}
+
+#tema-custom:checked ~ .theme {
+  --bg: #fffdf7;
+  --text: #14281d;
+  --muted: #6b7a6f;
+  --border: #e7e2d3;
+  --accent: #b202b8;
+  --accent-text: #ffffff;
+  --btn-bg: #b202b8;
+  --btn-text: #ffffff;
+}
+
+/* ---------- Base ---------- */
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: #f3f4f6;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+/* Radios ocultos pero accesibles con teclado */
+.radio {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.theme {
+  width: 100%;
+  max-width: 340px;
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  transition: background .2s, color .2s, border-color .2s;
+}
+
+/* ---------- Fila de opciones ---------- */
+.options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.options label {
+  padding: 8px 0;
+  text-align: center;
+  font-size: 13px;
+  cursor: pointer;
+  color: var(--text);
+  border-left: 1px solid var(--border);
+  transition: background .2s, color .2s;
+}
+.options label:first-child { border-left: 0; }
+
+/* Opción activa */
+#tema-light:checked  ~ .theme label[for="tema-light"],
+#tema-dark:checked   ~ .theme label[for="tema-dark"],
+#tema-custom:checked ~ .theme label[for="tema-custom"] {
+  background: var(--accent);
+  color: var(--accent-text);
+}
+
+/* Foco visible con teclado */
+#tema-light:focus-visible  ~ .theme label[for="tema-light"],
+#tema-dark:focus-visible   ~ .theme label[for="tema-dark"],
+#tema-custom:focus-visible ~ .theme label[for="tema-custom"] {
+  outline: 2px solid var(--text);
+  outline-offset: -4px;
+}
+
+/* ---------- Tarjeta de vista previa ---------- */
+.preview { margin-top: 32px; }
+
+.preview h1 {
+  margin: 0 0 12px;
+  font-size: 28px;
+  line-height: 1.2;
+}
+
+.preview p {
+  margin: 0 0 24px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.btn {
+  font: inherit;
+  font-size: 13px;
+  padding: 10px 16px;
+  border: 0;
+  border-radius: 6px;
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  cursor: pointer;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme, .options label { transition: none; }
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ejercicio 1 - Selector de temas</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Los radios van ANTES de la tarjeta para poder usar :checked ~ .theme -->
+  <input class="radio" type="radio" name="tema" id="tema-light" checked>
+  <input class="radio" type="radio" name="tema" id="tema-dark">
+  <input class="radio" type="radio" name="tema" id="tema-custom">
+
+  <main class="theme">
+    <div class="options">
+      <label for="tema-light">Light</label>
+      <label for="tema-dark">Dark</label>
+      <label for="tema-custom">Custom</label>
+    </div>
+
+    <section class="preview">
+      <h1>EXAMEN PRACTICO!</h1>
+      <p>Ejercicio 1: Solo CSS y HTML.</p>
+      <button class="btn" type="button">Primary Button</button>
+    </section>
+  </main>
+
+</body>
+</html>
